@@ -26,7 +26,7 @@ export default class SignUp extends React.Component{
                     onChangeText={password => this.setState({password})}
                     value={this.state.password}/>
                 <Button title="Cadastrar" onPress={this.handleSignUp}/>
-                <Button title="Já possui uma conta? Faça o login"
+                <Button title="Ja possui uma conta? Faca o login"
                     onPress={() => this.props.navigation.navigate('Login')}/> 
             </View>
         )

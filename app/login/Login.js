@@ -5,8 +5,12 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
     state = { email: '', password: '', errorMessage: null }
 
     handleLogin = () => {
-      // TODO: Firebase 
-      console.log('handleLogin')
+      const { email, pasword } = this.state
+      firebase
+      .auth()
+      .signInWithEmailAndPassword(email, password)
+      .then(() => this.props.navigation.navigate('Main'))
+      .catch(error => this.setState({ errorMessage: error.message }))
     }
 
     render() {
@@ -34,7 +38,7 @@ import { StyleSheet, Text, TextInput, View, Button } from 'react-native';
             />
             <Button title="Login" onPress={this.handleLogin} />
             <Button
-              title="Não possui uma conta? Cadastre-se"
+              title="Nao possui uma conta? Cadastre-se"
               onPress={() => this.props.navigation.navigate('SignUp')}
             />
           </View>

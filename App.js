@@ -9,24 +9,33 @@
 import React, {Component} from 'react';
 import {Platform, StyleSheet, Text, View} from 'react-native';
 import {SwitchNavigator} from 'react-navigation';
+import { createStackNavigator, createAppContainer } from 'react-navigation';
 
 import Loading from './app/login/Loading';
 import SignUp from './app/login/SignUp';
 import Login from './app/login/Login';
 import Main from './app/login/Main';
 
-const App = SwitchNavigator({
-    Loading,
-    SignUp,
-    Login,
-    Main
-  },
-  {
-    initialRouteName: 'Loading'
-  }
-)
 
-export default App;
+const AppNavigator = createStackNavigator({
+  Loading: {
+    screen: Loading
+  },
+  SignUp: {
+    screen: SignUp
+  },
+  Login: {
+    screen: Login
+  },
+  Main: {
+    screen: Main
+  },
+  initialRouteName: 'Loading'
+});
+
+export default createAppContainer(AppNavigator);
+
+// export default App;
 
 // const instructions = Platform.select({
 //   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
